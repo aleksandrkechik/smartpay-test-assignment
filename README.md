@@ -39,3 +39,14 @@ The API should be running on your port 8080.
 # How to submit
 
 Please push your code to a public repository and submit the link via email. Please do not fork this repository.
+
+# Assumptions and solutions
+
+First of all I want to thank you for this task! It was really fun!
+Running the code remain the same: sbt run would start the service and it's ready to accept request and redirect it to smartcloud.
+I tried to keep original code as intact as possible, and keep additional dependencies minimal.
+Couple things that I'd work for if I'd need to develop this project further:
+1. Added retry policy for requests (default way would be just have retry Num in config and make multiple attempts to call API)
+1. Another thing (but this would depend on desired behaviour) might be to have caching the latest call result and refresh in by schedule.
+This would help with highload, but then we'd need to clarify what is the max delay of info we can have,
+1. Also, that's a bit of a personal preference, but I'd try to get rid of throwing errors anyway and switch everything possible to eithers.
